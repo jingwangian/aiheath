@@ -10,7 +10,13 @@ class ChatRobot:
 
         if file_name is None:
             file_name = os.path.join(os.getcwd(), 'robot/data/training_data.json')
+        self.file_name = file_name
+        self.chat_finished = False
         self.train(file_name)
+
+    def reset(self):
+        self.chat_finished = False
+        self.questions = Questions(self.file_name)
 
     def start(self):
         """Used in concole
@@ -49,6 +55,7 @@ class ChatRobot:
         return self.questions.get_next_question_message()
 
     def get_final_answer(self):
+        self.chat_finished = True
         return self.questions.get_final_answer()
 
     def train(self, file_name):
