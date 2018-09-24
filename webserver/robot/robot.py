@@ -1,5 +1,4 @@
 import time
-import random
 import json
 import os
 
@@ -7,12 +6,7 @@ import os
 class ChatRobot:
     def __init__(self, name, file_name=None, **kwargs):
         self.name = name
-        self.responses = {
-            "how are you today?": ["I am fine.Thank you.", "I am good.", "Good, how about you?"],
-            "what's your name?": ["my name is {0}".format(name)],
-            "what's today's weather?": ["the weather is {0}".format('sunny')],
-            "default": ["default message"]
-        }
+        self.responses = {}
         self.last_message = ''
         self.last_response = ''
 
