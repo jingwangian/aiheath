@@ -34,7 +34,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading top-bar">
                     <div class="col-md-8 col-xs-8">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Medius</h3>
                     </div>
                     <div class="col-md-4 col-xs-4" style="text-align: right;">
                         <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
@@ -42,29 +42,6 @@
                     </div>
                 </div>
                 <div class="panel-body msg_container_base" id="msg_body_id" ng-bind-html="divHtmlVar">
-                    <div class="row msg_container base_receive"> 
-                            <div class="col-md-2 col-xs-2 avatar"> 
-                                <img src="/static/img/robot.png" class=" img-responsive "> 
-                            </div> 
-                            <div class="col-md-10 col-xs-10"> 
-                                <div class="messages msg_receive"> 
-                                    <p>"Hello, I am going to ask you few questions that will help me know you better?"</p> 
-                                    <time datetime="2009-11-13T20:00">Medius</time> 
-                                </div> 
-                            </div> 
-                    </div>
-
-                    <div class="row msg_container base_receive"> 
-                            <div class="col-md-2 col-xs-2 avatar"> 
-                                <img src="/static/img/robot.png" class=" img-responsive "> 
-                            </div> 
-                            <div class="col-md-10 col-xs-10"> 
-                                <div class="messages msg_receive"> 
-                                    <p>{{question}}</p> 
-                                    <time datetime="2009-11-13T20:00">Medius</time> 
-                                </div> 
-                            </div> 
-                    </div>
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
@@ -106,11 +83,23 @@ app.controller('myCtrl', function($scope,$http,$sce) {
     $scope.count = 0;
     $scope.dialog_messages = [];
 
-    // $scope.divHtmlVar = $sce.trustAsHtml(create_robot_dlg("Hello, I am going to ask you few questions that will help me know you better?"));
-    // $scope.divHtmlVar = $sce.trustAsHtml($scope.divHtmlVar + create_robot_dlg("Simply start by telling me about a sympton that's bothering you:"));
+    $scope.divHtmlVar = $sce.trustAsHtml(create_robot_dlg("Hello, I am going to ask you few questions that will help me know you better?"));
 
     set_input_type("input");
 
+    get_first_message = function(){
+        msg = 'http://127.0.0.1:8000/medius/message/'
+        $http.get(msg)
+         .then(function(response){
+            console.log("get_first_message: ",response.data['message']);
+            res_message = response.data['message'];
+            // $scope.myWelcome = response.data['message'];
+            $scope.divHtmlVar = $sce.trustAsHtml($scope.divHtmlVar + create_robot_dlg(res_message));
+            scroll_to_bottom();
+            $scope.input_message = ''
+         });
+    };
+    get_first_message();
     $scope.send_message = function(){
         msg = 'http://127.0.0.1:8000/medius/message/'+$scope.input_message
         $http.get(msg)

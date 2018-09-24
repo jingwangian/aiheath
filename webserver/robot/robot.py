@@ -84,6 +84,7 @@ class Questions:
             return None
 
         self.current_question = self.questions_detail[key]
+        print("next message:", self.current_question['message'])
         return self.current_question['message']
 
     def set_question_answer(self, message):
