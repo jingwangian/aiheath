@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: aiheath
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./webserver:/opt/aiheath/webserver
+    command: python3 manage.py runserver 0.0.0.0:8000
+
+
