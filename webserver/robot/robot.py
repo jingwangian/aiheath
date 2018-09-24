@@ -45,14 +45,17 @@ class ChatRobot:
         return self.questions.get_next_question_message()
 
     def get_response(self, message):
-        message = message.lower()
         if self.questions.is_valid_result(message):
             self.questions.set_question_answer(message)
         else:
             msg = self.questions.get_expected_prompt_message()
             return "Invalid input, please input : {}".format(msg)
 
-        return self.questions.get_next_question_message()
+        try:
+            msg = self.questions.get_next_question_message()
+            return msg
+        except StopIteration:
+            return None
 
     def get_final_answer(self):
         self.chat_finished = True
@@ -72,6 +75,7 @@ class Questions:
         self.questions_detail = {}
 
         self.load(file_name)
+        self.msg = self.message_generator()
 
     def get_expected_prompt_message(self):
         expected = self.current_question['expected']
@@ -80,16 +84,29 @@ class Questions:
         else:
             return ''
 
+    def message_generator(self):
+        for key in self.questions_list:
+            self.current_question = self.questions_detail[key]
+            print("next message:", self.current_question['message'])
+            yield self.current_question['message']
+
     def get_next_question_message(self):
-        self.index += 1
         try:
-            key = self.questions_list[self.index - 1]
-        except IndexError:
+            q_msg = next(self.msg)
+        except StopIteration:
             return None
 
-        self.current_question = self.questions_detail[key]
-        print("next message:", self.current_question['message'])
-        return self.current_question['message']
+        return q_msg
+
+        # self.index += 1
+        # try:
+        #     key = self.questions_list[self.index - 1]
+        # except IndexError:
+        #     return None
+
+        # self.current_question = self.questions_detail[key]
+        # print("next message:", self.current_question['message'])
+        # return self.current_question['message']
 
     def set_question_answer(self, message):
         if not self.is_valid_result(message):
@@ -106,6 +123,9 @@ class Questions:
     def is_valid_result(self, message) -> bool:
         """Check the input message is valid or not
         """
+        if len(message) == 0:
+            return False
+
         expected = self.current_question['expected']
         if expected:
             if message in expected:

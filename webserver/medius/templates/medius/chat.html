@@ -101,6 +101,10 @@ app.controller('myCtrl', function($scope,$http,$sce) {
     };
     get_first_message();
     $scope.send_message = function(){
+        if($scope.input_message.length == 0){
+            window.alert("Input is null");
+            return;
+        }
         msg = 'http://127.0.0.1:8000/medius/message/'+$scope.input_message
         $http.get(msg)
          .then(function(response){

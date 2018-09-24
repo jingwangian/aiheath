@@ -22,7 +22,8 @@ def handle_first_message(request):
 
 
 def handle_message(request, message):
-    # print("Input message: ", message)
+    print("Input message: ", message)
+    message = message.lower().strip()
     res_message = dict()
     if chatrobot.chat_finished:
         res_message['message'] = "Chat has finished. Please refresh page to start again!"
