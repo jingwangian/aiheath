@@ -8,19 +8,20 @@ chatrobot = ChatRobot('Medius')
 
 
 def index(request):
-    context = {}
+    question = chatrobot.get_first_question()
+    context = {"question": question}
 
     return render(request, 'medius/chat.html', context)
     # return HttpResponse("This is index page")
 
 # btc/message/xxxx
 
+# def handle_first_message(re)
+
 
 def handle_message(request, message):
     print("Input message: ", message)
     res_message = dict()
     res_message['message'] = chatrobot.get_response(message)
-
-    # print(sys.path)
 
     return JsonResponse(res_message)

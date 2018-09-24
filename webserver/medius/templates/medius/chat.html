@@ -42,6 +42,29 @@
                     </div>
                 </div>
                 <div class="panel-body msg_container_base" id="msg_body_id" ng-bind-html="divHtmlVar">
+                    <div class="row msg_container base_receive"> 
+                            <div class="col-md-2 col-xs-2 avatar"> 
+                                <img src="/static/img/robot.png" class=" img-responsive "> 
+                            </div> 
+                            <div class="col-md-10 col-xs-10"> 
+                                <div class="messages msg_receive"> 
+                                    <p>"Hello, I am going to ask you few questions that will help me know you better?"</p> 
+                                    <time datetime="2009-11-13T20:00">Medius</time> 
+                                </div> 
+                            </div> 
+                    </div>
+
+                    <div class="row msg_container base_receive"> 
+                            <div class="col-md-2 col-xs-2 avatar"> 
+                                <img src="/static/img/robot.png" class=" img-responsive "> 
+                            </div> 
+                            <div class="col-md-10 col-xs-10"> 
+                                <div class="messages msg_receive"> 
+                                    <p>{{question}}</p> 
+                                    <time datetime="2009-11-13T20:00">Medius</time> 
+                                </div> 
+                            </div> 
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
@@ -83,10 +106,10 @@ app.controller('myCtrl', function($scope,$http,$sce) {
     $scope.count = 0;
     $scope.dialog_messages = [];
 
-    $scope.divHtmlVar = $sce.trustAsHtml(create_robot_dlg("Hi I'm Medius. \n I'am here 24/7 to answer your questions."));
-    $scope.divHtmlVar = $sce.trustAsHtml($scope.divHtmlVar + create_robot_dlg("Simply start by telling me about a sympton that's bothering you:"));
+    // $scope.divHtmlVar = $sce.trustAsHtml(create_robot_dlg("Hello, I am going to ask you few questions that will help me know you better?"));
+    // $scope.divHtmlVar = $sce.trustAsHtml($scope.divHtmlVar + create_robot_dlg("Simply start by telling me about a sympton that's bothering you:"));
 
-    set_input_type("select");
+    set_input_type("input");
 
     $scope.send_message = function(){
         msg = 'http://127.0.0.1:8000/medius/message/'+$scope.input_message
@@ -101,7 +124,7 @@ app.controller('myCtrl', function($scope,$http,$sce) {
             $scope.input_message = ''
          });
 
-         set_input_type("input");
+         // set_input_type("input");
     }
 });
 </script>

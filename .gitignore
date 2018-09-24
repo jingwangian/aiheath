@@ -22,3 +22,4 @@ t1.py
 *.db
 
 __pycache__
+.pytest_cache

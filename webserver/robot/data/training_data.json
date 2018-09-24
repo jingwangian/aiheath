@@ -1,13 +1,35 @@
 {
-    "start":"Hi I'm Medius. I'am here 24/7 to answer your questions.\nSimply start by telling me about a sympton that's bothering you:",
-    "headache": "What type of headache did you get: Continues or Intermittent",
-    "continues":"How many days did you got this Headache?",
-    "intermittent":"How do you feeling now: better, worse or unchanged ?",
-    "better" : "Good news. Keep going on",
-    "worse" : "You have to see the doctor",
-    "unchanged":"You have to get some medince to eat.",
-    "cough":"Tell me what type of Cough you got: dry cough, chronic cough or coughing up blood?",
-    "dry cough":"eat some medince you will be fine",
-    "chronic cough":"Don't worry about that",
-    "coughing up blood":"Oh, I am so sorry it's too bad. I suggest you go to the hosipital to do the test detail."
+    "questions_list":["username","gender","birth_date","smoker"],
+    "questions_detail":{
+        "username":{
+            "message":"What is your name?",
+            "input_type":"text",
+            "expected":{},
+            "result":""
+        },
+        "gender":{
+            "message":"Are you male or female?",
+            "input_type":"option",
+            "expected":{
+                    "male":"male",
+                    "female":"female"
+                },
+            "result":""
+        },
+        "birth_date":{
+            "message":"When were you born?",
+            "input_type":"date",
+            "expected":{},
+            "result":""
+        },
+        "smoker":{
+            "message":"Are you a smoker?",
+            "input_type":"option",
+            "expected":{
+                    "yes":"smoker",
+                    "no":"nonsmoker"
+                },
+            "result":""
+        }
+	}
 }
