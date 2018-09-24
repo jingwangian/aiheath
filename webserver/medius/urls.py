@@ -18,8 +18,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('message/abc/$', views.handle_message, name='handle_message'),
     path('message/', views.handle_first_message, name='handle_first_message'),
     path('message/<message>/', views.handle_message, name='handle_message'),
-    # url(r'^download/(?P<table_name>\w+)/$', views.file_download, name='file_download'),
 ]

@@ -11,9 +11,6 @@ def index(request):
     context = {}
 
     return render(request, 'medius/chat.html', context)
-    # return HttpResponse("This is index page")
-
-# btc/message/xxxx
 
 
 def handle_first_message(request):
@@ -27,7 +24,7 @@ def handle_message(request, message):
     res_message = dict()
     msg = chatrobot.get_response(message)
     if msg is None:
-        res_message['message'] = "Thank you. Following is your result:<br>{}".format(chatrobot.get_final_answer())
+        res_message['message'] = "Thank you. Following is your result information:<br>{}".format(chatrobot.get_final_answer())
     else:
         res_message['message'] = msg
 

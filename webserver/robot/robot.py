@@ -35,9 +35,6 @@ class ChatRobot:
 
         print("Doctor: " + res)
 
-    # def get_next_question(self):
-    #     return self.question.get_next_question_message()
-
     def get_first_question(self):
         return self.questions.get_next_question_message()
 
