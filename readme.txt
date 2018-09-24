@@ -1,4 +1,4 @@
-1. go into container subdir, run "make" command to build the dockerfile
+1. run "start.sh" command to build the dockerfile
 
 2. run 'docker-compose up' to start the web service
 
