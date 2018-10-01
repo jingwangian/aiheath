@@ -10,12 +10,13 @@ import scrapy
 
 class SymptomItem(scrapy.Item):
     # define the fields for your item here like:
+    url = scrapy.Field()
     category = scrapy.Field()
     symptoms = scrapy.Field()
-    url = scrapy.Field()
+
 
 class DiseaseItem(scrapy.Item):
     # define the fields for your item here like:
+    url = scrapy.Field()
     category = scrapy.Field()
     disease_list = scrapy.Field()
-    url = scrapy.Field()
