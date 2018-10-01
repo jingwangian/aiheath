@@ -3,30 +3,18 @@
 import pytest
 import os
 import sys
-print(os.getcwd())
-print(sys.path)
 
-from symptom.doctor import Transformer
-from scrapy.http.response.html import HtmlResponse
+from doctor.transformer import Transformer
 
 
 class TestTransformer:
     def test_init(self):
         trans = Transformer()
-        assert 1
+        assert isinstance(trans, Transformer)
 
-    def test_process(self):
-        pass
-
-    def test_get_plain_text(self):
+    def test_call(self):
         trans = Transformer()
 
-        with open('tests/data/dizziness.html', 'rb') as f:
-            response = HtmlResponse(url='https://www.healthline.com/symptom/dizziness', body=f.read())
+        text = trans("I am a student and studying englishx")
 
-            text = trans.get_plain_text(response)
-
-            print(text)
-
-    def test_get_words_list(self):
-        pass
+        assert text == "i am a student and study english"

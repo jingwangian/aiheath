@@ -1,7 +1,7 @@
 doctor module is for the PartB task
 ===================================
 
-Start a doctor by using command : python3 start.py
+Start a doctor by using command : python3 start_doctor.py
 
 Input symptom description: Input the description here, for example, input < pain in stomach>
 Available symptom: Return a matched symptom. If can't find one return "Unknown"

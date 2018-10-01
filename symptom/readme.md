@@ -32,7 +32,7 @@ scrapy crawl healthline -L WARNING -a opt=symptom -a category=dizziness
 
 Part B task
 ===========
-Please run "python3 start.py" to start a doctor to talk.
+Please run "python3 start_doctor.py" to start a doctor to talk.
 
 Input symptom description: Input the description here, for example, input < pain in stomach>
 Available symptom: Return a matched symptom. If can't find one return "Unknown"
