@@ -9,7 +9,7 @@ USER root
 ## Install packages required to compile required python modules
 
 RUN pip3 install --upgrade pip
-RUN pip3 install django
+RUN pip3 install Django==2.1.* 
 
 # Setup a runtime user
 VOLUME /opt/aiheath

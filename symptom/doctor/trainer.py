@@ -11,4 +11,7 @@ train_data = [
     ("stomach pain", "abdominal pain"),
     ("get pain in stomach", "abdominal pain"),
     ("Disequilibrium", "Dizziness"),
+    ("pain in head", "headache"),
+    ("head is painful", "headache"),
+    ("paining head", "headache"),
 ]
